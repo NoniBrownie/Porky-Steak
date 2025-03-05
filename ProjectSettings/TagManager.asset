@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - symbol
+  - platform
+  - symbolKiller
+  - SDD J0
+  - SDD J1
+  - SDD J2
+  - SDD J3
+  - SDD J4
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - SDDJ0
+  - SDDJ1
+  - SDDJ2
+  - SDDJ3
+  - SDDJ4
+  - SymbolKller
+  - SBDJ0
+  - SBDJ1
+  - SBDJ2
+  - SBDJ3
+  - SBDJ4
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
