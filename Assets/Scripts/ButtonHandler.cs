@@ -10,14 +10,19 @@ public class Button : MonoBehaviour
 
     void Start () 
     {
-    rollButtonRefPlay = FindObjectOfType<GameBoard>();
-    rollButtonRefClean = FindObjectOfType<SymbolDrop>();
+        rollButtonRefPlay = FindObjectOfType<GameBoard>();
+        rollButtonRefClean = FindObjectOfType<SymbolDrop>();
     }
     public void rollButtonPlay()
     {
-    rollButtonRefPlay.RollButton();
-    rollButtonRefClean.RollButton();
+        rollButtonRefClean.RollButton();
+        StartCoroutine(WaitAndRoll());
+    }
 
+    private IEnumerator WaitAndRoll()
+    {
+        yield return new WaitForSeconds(0.25f); 
+        rollButtonRefPlay.RollButton(); 
     }
 
 }

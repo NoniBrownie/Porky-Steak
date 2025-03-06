@@ -4,13 +4,13 @@ using UnityEngine;
 
 
 public class SymbolDrop : MonoBehaviour
-
-
 {
+
+    private GameObject sddFolder;
     // Start is called before the first frame update
     void Start()
     {
-  
+        sddFolder = GameObject.Find("SDD");
     }
 
     public void RollButton() //Pal botón
@@ -28,24 +28,19 @@ public class SymbolDrop : MonoBehaviour
     
     public IEnumerator removeBoard() 
     {
-        for (int i = 0; i <= 4; i++)
-        {
-            //poner J LUEGO DE SDD PARA QUE FUNCIONE
-            string tag = "SDD " + i;
-            GameObject[] symbolDropDrivers = GameObject.FindGameObjectsWithTag(tag);
 
-            foreach (GameObject symbolDropDriver in symbolDropDrivers)
-            {
-                BoxCollider2D boxColliderSDD = symbolDropDriver.GetComponent<BoxCollider2D>();
-                if (boxColliderSDD != null)
-                {
-                    boxColliderSDD.enabled = false;
-                      yield return new WaitForSeconds(0.1f);
-                    
-                }
-            }
+        foreach (BoxCollider2D collider in sddFolder.GetComponentsInChildren<BoxCollider2D>())
+        {
+            collider.enabled = false;
         }
-        
+
+        yield return new WaitForSeconds(0.5f);
+
+        foreach (BoxCollider2D collider in sddFolder.GetComponentsInChildren<BoxCollider2D>()) 
+        {
+            collider.enabled = true;
+        }
+
     } 
 
 }

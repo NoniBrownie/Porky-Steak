@@ -20,7 +20,7 @@ public class GameBoard : MonoBehaviour
         board = new GameObject[width,height];
     }
 
-    public void RollButton() //Para crear el botón
+    public void RollButton() //Funcionalidad del botón
     {
         StartCoroutine(rollSymbols());
     }

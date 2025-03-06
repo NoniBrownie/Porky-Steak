@@ -7,7 +7,7 @@ public class SymbolPhysics : MonoBehaviour
     public int hasCollided = 0; //0 para no colisionado y el resto para colisionado
     private Rigidbody2D rb;
     private GameObject symbol;
-    public float speed = 0.1f;
+    public float speed = 0.2f;
     public GameBoard gameBoard;
     public int i;
     public int j;
