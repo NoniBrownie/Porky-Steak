@@ -6,11 +6,11 @@ using UnityEngine;
 public class SymbolDrop : MonoBehaviour
 {
 
-    private GameObject sddFolder;
+    private GameObject bouncePlatformFolder;
     // Start is called before the first frame update
     void Start()
     {
-        sddFolder = GameObject.Find("SDD");
+        bouncePlatformFolder = GameObject.Find("bouncePlatform");
     }
 
     public void RollButton() //Pal botón
@@ -29,14 +29,14 @@ public class SymbolDrop : MonoBehaviour
     public IEnumerator removeBoard() 
     {
 
-        foreach (BoxCollider2D collider in sddFolder.GetComponentsInChildren<BoxCollider2D>())
+        foreach (BoxCollider2D collider in bouncePlatformFolder.GetComponentsInChildren<BoxCollider2D>())
         {
             collider.enabled = false;
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        foreach (BoxCollider2D collider in sddFolder.GetComponentsInChildren<BoxCollider2D>()) 
+        foreach (BoxCollider2D collider in bouncePlatformFolder.GetComponentsInChildren<BoxCollider2D>()) 
         {
             collider.enabled = true;
         }

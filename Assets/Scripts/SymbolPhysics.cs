@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SymbolPhysics : MonoBehaviour
 {
-    public int hasCollided = 0; //0 para no colisionado y el resto para colisionado
+    public int hasBounced = 0; // values other  than 0 means it has bounced
     private Rigidbody2D rb;
     private GameObject symbol;
     public float speed = 0.2f;
@@ -41,51 +41,38 @@ void Start()
         break;
     }
 }
-    void Update()
-    {
-    transform.Translate(Vector3.up * -speed * Time.deltaTime);
-
-    }
     public void setSpeed(float newSpeed)
     {
         speed = newSpeed;
-    }    
+    }  
+
+    void Update()
+    {
+  
+    }  
+    void FixedUpdate()
+    {
+        
+
+        if (hasBounced == 1)
+        {
+            Bounce();
+            hasBounced = 2;
+        }
+        
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        hasCollided = hasCollided +1;
-        if (hasCollided == 1)
+        if (collision.gameObject.tag== "symbolPlatform")
         {
-            setSpeed(0);
-            Bounce();
-
-            switch(j)
-            {
-                case 0:
-                symbol.layer = LayerMask.NameToLayer("SDDJ0");
-                break;
-                case 1:
-                symbol.layer = LayerMask.NameToLayer("SDDJ1");
-                break;
-                case 2:
-                symbol.layer = LayerMask.NameToLayer("SDDJ2");
-                break;
-                case 3:
-                symbol.layer = LayerMask.NameToLayer("SDDJ3");
-                break;
-                case 4:
-                symbol.layer = LayerMask.NameToLayer("SDDJ4");
-                break;
-            }
-
+            hasBounced++;
         }
- 
-        
     }
 
     void Bounce()
     {
-            rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);   
-
+            rb.AddForce(Vector2.up * 12, ForceMode2D.Impulse);   
+            Debug.Log("un objeto ha rebotado");
     }
 
     
