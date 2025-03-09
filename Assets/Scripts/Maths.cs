@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Maths : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int randomNumber;
     void Start()
     {
-        
+        int randomNumber = GenerateRandomNumber();
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GenerateRandomNumber()
     {
-        
+        return Random.Range(0, 9999);
     }
 }

@@ -7,11 +7,7 @@ TagManager:
   - symbol
   - platform
   - symbolKiller
-  - SDD J0
-  - SDD J1
-  - SDD J2
-  - SDD J3
-  - SDD J4
+  - symbolPlatform
   layers:
   - Default
   - TransparentFX
