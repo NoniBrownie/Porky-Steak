@@ -7,11 +7,11 @@ public class SymbolSpawnManager : MonoBehaviour
     public GameObject[] symbolPrefabs;
     private float appearingOdds;
     private float[] xPositions = { -7, -5, -3, -1, 1, 3 }; // all X positions every column can have
-    public GameObject[,] symbolsMatrix;
+    public Symbol[,] symbolsData;
 
     void Start()
     {
-        symbolsMatrix = new GameObject[6,5];
+        symbolsData = new Symbol[6,5];
     }
 
     public IEnumerator GenerateSymbol()
@@ -54,7 +54,7 @@ public class SymbolSpawnManager : MonoBehaviour
                 spriteRenderer.enabled = true;
                 symbolPhysicsInstance.enabled = true;
 
-                symbolsMatrix[col, row] = newSymbol;
+                symbolsData[col, row] = newSymbol;
                 Debug.Log($"Symbol creado - Tier: {newSymbol.tier}, Posición: ({newSymbol.xPosition}, {newSymbol.yPosition}), Columna: {col+1}, Fila: {row+1}");
 
             }
