@@ -19,13 +19,18 @@ public class SymbolMatch : MonoBehaviour
             for (int row = 0; row < 5; row++)
             {
                 Symbol symbol = spawnManager.symbolsData[col, row];
-                if (symbol.tier == 1)
+
+                switch(symbol.tier)
                 {
-                    Debug.LogWarning(" tier 1 symbol generated");
-                }
-                else
-                {
-                    Debug.LogWarning("nonas");
+                    case 1: Debug.LogWarning("tier 1 symbol generated at column: " + symbol.positionInColumn); break;
+                    case 2: Debug.LogWarning("tier 2 symbol generated at column: " + symbol.positionInColumn); break;
+                    case 3: Debug.LogWarning("tier 3 symbol generated at column: " + symbol.positionInColumn); break;
+                    case 4: Debug.LogWarning("tier 4 symbol generated at column: " + symbol.positionInColumn); break;
+                    case 5: Debug.LogWarning("tier 5 symbol generated at column: " + symbol.positionInColumn); break;
+                    case 6: Debug.LogWarning("tier 6 symbol generated at column: " + symbol.positionInColumn); break;
+                    case 7: Debug.LogWarning("tier 7 symbol generated at column: " + symbol.positionInColumn); break;
+                    case 8: Debug.LogWarning("tier 8 symbol generated at column: " + symbol.positionInColumn); break;
+                    case 9: Debug.LogWarning("tier 9 symbol generated at column: " + symbol.positionInColumn); break;
                 }
             }
         }

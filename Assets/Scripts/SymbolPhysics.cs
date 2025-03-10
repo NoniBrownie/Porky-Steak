@@ -10,6 +10,7 @@ public class SymbolPhysics : MonoBehaviour
     public int verticalBounce = 9;
     public int column;
     public int positionInColumn;
+    public 
 
     void Start()
     {
