@@ -547,7 +547,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -729,8 +729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 703.8634, y: -371.18262}
-  m_SizeDelta: {x: 278.2731, y: 203.6348}
+  m_AnchoredPosition: {x: 184, y: -53.2}
+  m_SizeDelta: {x: 75.2731, y: 51.6348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109458528
 MonoBehaviour:
@@ -3067,7 +3067,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4528,7 +4528,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5197,7 +5197,7 @@ Transform:
   m_GameObject: {fileID: 1612809308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29029983, y: 0.487941, z: -0.0020686276}
+  m_LocalPosition: {x: 0.29029983, y: 1.04, z: -0.0020686276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5494,7 +5494,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6212,19 +6212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a89c16ddcd1f944862e0af7441eaf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 6
-  height: 5
-  symbols:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  symbolPhysics: {fileID: 0}
 --- !u!4 &2143910449
 Transform:
   m_ObjectHideFlags: 0
@@ -6247,7 +6234,7 @@ SceneRoots:
   - {fileID: 327989828}
   - {fileID: 2143910449}
   - {fileID: 1643436257}
-  - {fileID: 698341702}
   - {fileID: 2129688657}
   - {fileID: 1275352401}
   - {fileID: 1612809309}
+  - {fileID: 698341702}
