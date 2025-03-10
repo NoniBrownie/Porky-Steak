@@ -9,19 +9,24 @@ public class SymbolPhysics : MonoBehaviour
     private GameObject symbol;
     public int verticalBounce = 9;
     public int column;
-    public int j;
+    public int positionInColumn;
 
     void Start()
     {
         symbol = this.gameObject;
         rb = GetComponent<Rigidbody2D>();
 
-        if (j == 0) symbol.layer = LayerMask.NameToLayer("SBDJ0");
-        else if (j == 1) symbol.layer = LayerMask.NameToLayer("SBDJ1");
-        else if (j == 2) symbol.layer = LayerMask.NameToLayer("SBDJ2");
-        else if (j == 3) symbol.layer = LayerMask.NameToLayer("SBDJ3");
-        else if (j == 4) symbol.layer = LayerMask.NameToLayer("SBDJ4");
-        else if (j == 5) symbol.layer = LayerMask.NameToLayer("SBDJ5");
+        switch (positionInColumn)
+        {
+            case 0: symbol.layer = LayerMask.NameToLayer("SBDJ0"); break;
+            case 1: symbol.layer = LayerMask.NameToLayer("SBDJ1"); break;
+            case 2: symbol.layer = LayerMask.NameToLayer("SBDJ2"); break;
+            case 3: symbol.layer = LayerMask.NameToLayer("SBDJ3"); break;
+            case 4: symbol.layer = LayerMask.NameToLayer("SBDJ4"); break;
+            case 5: symbol.layer = LayerMask.NameToLayer("SBDJ5"); break;
+
+        }
+
     }
 
     void FixedUpdate()

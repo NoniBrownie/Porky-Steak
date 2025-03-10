@@ -7,6 +7,7 @@ public class SymbolSpawnManager : MonoBehaviour
     public GameObject[] symbolPrefabs;
     private float appearingOdds;
     private float[] xPositions = { -7, -5, -3, -1, 1, 3 }; // all X positions every column can have
+    public GameObject[,] symbolsMatrix;
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class SymbolSpawnManager : MonoBehaviour
                 Maths rng = FindObjectOfType<Maths>();
                 appearingOdds = rng.GenerateRandomNumber();
 
-
+                //sets symbol tier according to number generated at SymbolMath
                 if (appearingOdds >= 8400) newSymbol.tier = 1;
                 else if (appearingOdds >= 7000) newSymbol.tier = 2;
                 else if (appearingOdds >= 5700) newSymbol.tier = 3;
@@ -44,7 +45,7 @@ public class SymbolSpawnManager : MonoBehaviour
                 GameObject symbol = Instantiate(symbolPrefabs[newSymbol.tier - 1], position, Quaternion.identity);
 
                 SymbolPhysics symbolPhysicsInstance = symbol.GetComponent<SymbolPhysics>();
-                symbolPhysicsInstance.j = newSymbol.positionInColumn;
+                symbolPhysicsInstance.positionInColumn = newSymbol.positionInColumn;
                 symbolPhysicsInstance.column = col;
 
                 SpriteRenderer spriteRenderer = symbol.GetComponent<SpriteRenderer>();
