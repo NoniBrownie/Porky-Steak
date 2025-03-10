@@ -8,6 +8,8 @@ public class SymbolSpawnManager : MonoBehaviour
     private float appearingOdds;
     private float[] xPositions = { -7, -5, -3, -1, 1, 3 }; // all X positions every column can have
     public Symbol[,] symbolsData;
+    public bool boardGenerated = false;
+
 
     void Start()
     {
@@ -37,9 +39,7 @@ public class SymbolSpawnManager : MonoBehaviour
                 else if (appearingOdds >= 1500) newSymbol.tier = 7;
                 else if (appearingOdds >= 700) newSymbol.tier = 8;
                 else newSymbol.tier = 9;
-                Debug.Log("random number: "+ appearingOdds);
-                Debug.Log("Assigned Tier: " + newSymbol.tier);
-
+                
                 newSymbol.positionInColumn = row;
 
                 Vector2 position = new Vector2(newSymbol.xPosition, newSymbol.yPosition);
@@ -60,6 +60,7 @@ public class SymbolSpawnManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.1f);
         }
+        boardGenerated = true;
     }
 
     public void RollButton()

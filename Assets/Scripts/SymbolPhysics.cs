@@ -26,7 +26,6 @@ public class SymbolPhysics : MonoBehaviour
             case 5: symbol.layer = LayerMask.NameToLayer("SBDJ5"); break;
 
         }
-
     }
 
     void FixedUpdate()
