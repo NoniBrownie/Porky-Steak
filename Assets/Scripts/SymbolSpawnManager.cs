@@ -11,13 +11,14 @@ public class SymbolSpawnManager : MonoBehaviour
 
     void Start()
     {
+        symbolsMatrix = new GameObject[6,5];
     }
 
     public IEnumerator GenerateSymbol()
     {
-        for (int col = 0; col < 6; col++) // 6 columnas
+        for (int col = 0; col < 6; col++) // 6 columns
         {
-            for (int row = 0; row < 5; row++) // 5 filas
+            for (int row = 0; row < 5; row++) // 5 rows
             {
                 Symbol newSymbol = new Symbol(0, 0, 0f, 0, 0);
                 newSymbol.yPosition = 10 * 1.25f;
@@ -48,9 +49,14 @@ public class SymbolSpawnManager : MonoBehaviour
                 symbolPhysicsInstance.positionInColumn = newSymbol.positionInColumn;
                 symbolPhysicsInstance.column = col;
 
+                //setting for symbol sprites
                 SpriteRenderer spriteRenderer = symbol.GetComponent<SpriteRenderer>();
                 spriteRenderer.enabled = true;
                 symbolPhysicsInstance.enabled = true;
+
+                symbolsMatrix[col, row] = newSymbol;
+                Debug.Log($"Symbol creado - Tier: {newSymbol.tier}, Posición: ({newSymbol.xPosition}, {newSymbol.yPosition}), Columna: {col+1}, Fila: {row+1}");
+
             }
             yield return new WaitForSeconds(0.1f);
         }
