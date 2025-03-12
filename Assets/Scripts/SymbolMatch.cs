@@ -15,28 +15,48 @@ public class SymbolMatch : MonoBehaviour
 
     public void matchManager()
     {
+        List<Symbol> symbolsToDelete = new List<Symbol>();
+        symbolsCounter = new int[9];
         for (int col = 0; col < 6; col++)
         {
             for (int row = 0; row < 5; row++)
             {
                 Symbol symbol = spawnManager.symbolsData[col, row];
                 symbolsCounter[symbol.tier -1]++; //each  symbol has a position at symbolsCounter[] based on col & row
-                Debug.Log("Symbol tier" + symbol.tier + " generatad  at column: " + symbol.positionInColumn);
-                
             }
             rollsCounter++;
+        }
+        
+        //repeated symbols removal after repeated symbol counter
+        for (int col = 0; col < 6; col++)
+        {
+            for (int row = 0; row < 5; row++)
+            {
+                Symbol symbol = spawnManager.symbolsData[col, row];
+
+                if (symbolsCounter[symbol.tier - 1] >= 7)
+                {
+                    symbolsToDelete.Add(symbol);
+                }
+            }
+        }
+
+        //symbol remover 
+        foreach (Symbol symbol in symbolsToDelete)
+        {
+            Debug.LogWarning("Eliminando símbolo de tier " + symbol.tier);
+            Destroy(symbol.symbolObject);
         }
 
         //Debug for symbol appearing to check statistics
         for (int i = 0; i < symbolsCounter.Length; i++)
         {
-            Debug.LogWarning("Symbol tier: " + (i+1) + "has appeared a total of " + symbolsCounter[i] + " times");
+            Debug.Log("Symbol tier: " + (i+1) + "has appeared a total of " + symbolsCounter[i] + " times");
         }
 
         Debug.LogWarning("Game has been rolled " + rollsCounter/6 + " times");
         
     }
-
     // Update is called once per frame
     void Update()
     {

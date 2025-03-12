@@ -22,7 +22,7 @@ public class SymbolSpawnManager : MonoBehaviour
         {
             for (int row = 0; row < 5; row++) // 5 rows
             {
-                Symbol newSymbol = new Symbol(0, 0, 0f, 0, 0);
+                Symbol newSymbol = new Symbol(0, 0, 0f, 0, 0, null);
                 newSymbol.yPosition = 10 * 1.25f;
                 newSymbol.xPosition = xPositions[col]; // sets X position according the column
 
@@ -54,8 +54,8 @@ public class SymbolSpawnManager : MonoBehaviour
                 spriteRenderer.enabled = true;
                 symbolPhysicsInstance.enabled = true;
 
+                newSymbol.symbolObject = symbol;
                 symbolsData[col, row] = newSymbol;
-                Debug.Log($"Symbol creado - Tier: {newSymbol.tier}, Posición: ({newSymbol.xPosition}, {newSymbol.yPosition}), Columna: {col+1}, Fila: {row+1}");
 
             }
             yield return new WaitForSeconds(0.1f);
