@@ -9,8 +9,7 @@ public class SymbolPhysics : MonoBehaviour
     private GameObject symbol;
     public int verticalBounce = 9;
     public int column;
-    public int positionInColumn;
-    public 
+    public int positionInColumn; 
 
     void Start()
     {
@@ -19,7 +18,9 @@ public class SymbolPhysics : MonoBehaviour
 
         switch (positionInColumn)
         {
-            case 0: symbol.layer = LayerMask.NameToLayer("SBDJ0"); break;
+            //SBD are the invisible platforms that organizes symbols depending of its position in Y axis (J0 = Y0)
+            //assigning a layer to a symbol will make them stand in their respective position in game's board 
+            case 0: symbol.layer = LayerMask.NameToLayer("SBDJ0"); break;   
             case 1: symbol.layer = LayerMask.NameToLayer("SBDJ1"); break;
             case 2: symbol.layer = LayerMask.NameToLayer("SBDJ2"); break;
             case 3: symbol.layer = LayerMask.NameToLayer("SBDJ3"); break;
@@ -30,16 +31,16 @@ public class SymbolPhysics : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        if (hasBounced == 1)
+    {   //hasBounced maganages when should a symbol bounce
+        if (hasBounced == 1)    
         {
-            Bounce();
+            Bounce();   //when a symbol collision for the first time, it bounces
             hasBounced = 2;
         }
         if (hasBounced == 3)
         {
-            secondBounce();
-            hasBounced = 4;
+            secondBounce();     //smaller secound bounce to make animation smoother
+            hasBounced = 4;     //when in 4 symbols will no longer bounce
         }
     }
 

@@ -17,6 +17,7 @@ public class SymbolMatch : MonoBehaviour
     {
         List<Symbol> symbolsToDelete = new List<Symbol>();
         symbolsCounter = new int[9];
+
         for (int col = 0; col < 6; col++)
         {
             for (int row = 0; row < 5; row++)
@@ -27,14 +28,14 @@ public class SymbolMatch : MonoBehaviour
             rollsCounter++;
         }
         
-        //repeated symbols removal after repeated symbol counter
+        //For iteration to add Match-7 symbols to symbolsToDelete list
         for (int col = 0; col < 6; col++)
         {
             for (int row = 0; row < 5; row++)
             {
                 Symbol symbol = spawnManager.symbolsData[col, row];
 
-                if (symbolsCounter[symbol.tier - 1] >= 7)
+                if (symbolsCounter[symbol.tier - 1] >= 7)   //Evaluating with 7 so only symbols with 7 or more matches will be added to symbolsToDelete list
                 {
                     symbolsToDelete.Add(symbol);
                 }
@@ -44,8 +45,9 @@ public class SymbolMatch : MonoBehaviour
         //symbol remover 
         foreach (Symbol symbol in symbolsToDelete)
         {
-            Debug.LogWarning("Eliminando símbolo de tier " + symbol.tier);
+            Debug.LogWarning("Removing symbol of tier " + symbol.tier);
             Destroy(symbol.symbolObject);
+
         }
 
         //Debug for symbol appearing to check statistics

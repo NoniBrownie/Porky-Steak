@@ -17,8 +17,8 @@ public class Button : MonoBehaviour
     }
     public void rollButtonPlay()
     {
-        rollButtonRefClean.RollButton();
-        StartCoroutine(WaitAndRoll());
+        rollButtonRefClean.RollButton(); //This method guarantee the already placed symbols in board to fall
+        StartCoroutine(WaitAndRoll()); //Wait a few in order to clean the board and generate the next round of symbols
     }
 
     private IEnumerator WaitAndRoll()
@@ -28,11 +28,11 @@ public class Button : MonoBehaviour
 
         while(rollButtonRefPlay.boardGenerated == false)
         {
-            yield return null;
+            yield return null;  //Program waits to board generation in order to start matching game symbols
         }
 
         yield return new WaitForSeconds(3f); 
-        matchManagerRef.matchManager(); 
+        matchManagerRef.matchManager(); //Initialize symbol matching proccess 
     }
 
 }

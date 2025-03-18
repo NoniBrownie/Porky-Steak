@@ -12,6 +12,6 @@ public class Maths : MonoBehaviour
 
     public int GenerateRandomNumber()
     {
-        return Random.Range(0, 9999);
+        return Random.Range(0, 9999);      //Generating 1 random number from 0 to 9999 range to stablish symbol's tier 
     }
 }

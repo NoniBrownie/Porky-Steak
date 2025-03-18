@@ -18,6 +18,7 @@ public class SymbolSpawnManager : MonoBehaviour
 
     public IEnumerator GenerateSymbol()
     {
+        Maths rng = FindObjectOfType<Maths>();
         for (int col = 0; col < 6; col++) // 6 columns
         {
             for (int row = 0; row < 5; row++) // 5 rows
@@ -25,8 +26,6 @@ public class SymbolSpawnManager : MonoBehaviour
                 Symbol newSymbol = new Symbol(0, 0, 0f, 0, 0, null);
                 newSymbol.yPosition = 10 * 1.25f;
                 newSymbol.xPosition = xPositions[col]; // sets X position according the column
-
-                Maths rng = FindObjectOfType<Maths>();
                 appearingOdds = rng.GenerateRandomNumber();
 
                 //sets symbol tier according to number generated at SymbolMath
