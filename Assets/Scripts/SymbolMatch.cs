@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SymbolMatch : MonoBehaviour
 {
-    private SymbolSpawnManager spawnManager;
+    private SymbolBoardManager spawnManager;
     private int[] symbolsCounter = new int[9];
     private int rollsCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
-      spawnManager = FindObjectOfType<SymbolSpawnManager>();
+      spawnManager = FindObjectOfType<SymbolBoardManager>();
     }
 
     public void matchManager()
@@ -45,7 +45,7 @@ public class SymbolMatch : MonoBehaviour
         //symbol remover 
         foreach (Symbol symbol in symbolsToDelete)
         {
-            Debug.LogWarning("Removing symbol of tier " + symbol.tier);
+            Debug.LogWarning("Removing symbol of tier " + symbol.tier); 
             Destroy(symbol.symbolObject);
 
         }
@@ -57,11 +57,6 @@ public class SymbolMatch : MonoBehaviour
         }
 
         Debug.LogWarning("Game has been rolled " + rollsCounter/6 + " times");
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }

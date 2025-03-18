@@ -5,13 +5,13 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
 
-    private SymbolSpawnManager rollButtonRefPlay;
+    private SymbolBoardManager rollButtonRefPlay;
     private SymbolDrop rollButtonRefClean;
     private SymbolMatch matchManagerRef;
 
     void Start () 
     {
-        rollButtonRefPlay = FindObjectOfType<SymbolSpawnManager>();
+        rollButtonRefPlay = FindObjectOfType<SymbolBoardManager>();
         rollButtonRefClean = FindObjectOfType<SymbolDrop>();
         matchManagerRef = FindObjectOfType<SymbolMatch>();
     }

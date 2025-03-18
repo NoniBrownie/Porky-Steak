@@ -10,14 +10,16 @@ public class Symbol
     public float appearingOdds; 
     public int tier;
     public int positionInColumn;
+    public int column;
     public GameObject symbolObject;
 
-    public Symbol(float xPosition, float yPosition, float appearingOdds, int tier, int positionInColumn, GameObject symbolObject)
+    public Symbol(float xPosition, float yPosition, float appearingOdds, int tier, int positionInColumn, int column, GameObject symbolObject)
     {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
-        this.appearingOdds = appearingOdds;
+        this.appearingOdds = appearingOdds; 
         this.tier = tier;
+        this.column = column;
         this.positionInColumn = positionInColumn;
         this.symbolObject = symbolObject;
     }    
