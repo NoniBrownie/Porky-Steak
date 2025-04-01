@@ -10,13 +10,18 @@ public class MatchedSymbolReplacer : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
+
+        if (symbolBoardManager == null)
+        {
+            Debug.Log("SymbolBoard Manager isn't loaded correctly");
+        }
+
         while (symbolBoardManager.boardGenerated == false)
         {
             yield return null;      //Ininite while loop that only stops when board is generated.
-                                    //This is looks for board's generation in order to check board changes (to evaluate if it is needed to refill)
+                                    //This looks for board's generation in order to check board changes (to evaluate if it is needed to refill)
         }
 
-        Symbol board = symbolBoardManager.symbolsData[0,0];
     }
 
     public void SymbolRefill()
@@ -31,7 +36,7 @@ public class MatchedSymbolReplacer : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Symbol at column "+ col + "and row: " + " DOESN'T EXIST");
+                    Debug.Log("Symbol at column "+ col + "and row: " +row + " DOESN'T EXIST");
                 }
             }
                 

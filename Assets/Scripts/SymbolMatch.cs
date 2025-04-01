@@ -35,9 +35,10 @@ public class SymbolMatch : MonoBehaviour
             {
                 Symbol symbol = spawnManager.symbolsData[col, row];
 
-                if (symbolsCounter[symbol.tier - 1] >= 7)   //Evaluating with 7 so only symbols with 7 or more matches will be added to symbolsToDelete list
+                if (symbol != null && symbolsCounter[symbol.tier - 1] >= 7)   //Evaluating with 7 so only symbols with 7 or more matches will be added to symbolsToDelete list
                 {
                     symbolsToDelete.Add(symbol);
+                
                 }
             }
         }
@@ -47,8 +48,9 @@ public class SymbolMatch : MonoBehaviour
         {
             Debug.LogWarning("Removing symbol of tier " + symbol.tier); 
             Destroy(symbol.symbolObject);
-
-        }
+            spawnManager.symbolsData[symbol.column,symbol.positionInColumn] =null;
+         }
+        
 
         //Debug for symbol appearing to check statistics
         for (int i = 0; i < symbolsCounter.Length; i++)
