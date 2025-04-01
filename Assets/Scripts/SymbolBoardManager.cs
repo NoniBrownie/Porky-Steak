@@ -21,17 +21,19 @@ public class SymbolBoardManager : MonoBehaviour
 
     public IEnumerator GenerateSymbol()
     {
+        boardGenerated= false;
         for (int col = 0; col < 6; col++) // 6 columns
         {
             for (int row = 0; row < 5; row++) // 5 rows
             {
                 Symbol newSymbol = symbolFactory.CreateSymbol(col, row);
                 symbolPlacer.PlaceSymbol(newSymbol);
-                symbolsData[col, row] = newSymbol;
+                symbolsData[col, row] = newSymbol;  //Storing col and row to generated symbol upon creation
             }
             yield return new WaitForSeconds(0.1f);
         }
         boardGenerated = true;
+        
     }
 
     public void RollButton()

@@ -8,6 +8,7 @@ public class Button : MonoBehaviour
     private SymbolBoardManager rollButtonRefPlay;
     private SymbolDrop rollButtonRefClean;
     private SymbolMatch matchManagerRef;
+    public MatchedSymbolReplacer matchedSymbolReplacer;
 
     void Start () 
     {
@@ -33,6 +34,7 @@ public class Button : MonoBehaviour
 
         yield return new WaitForSeconds(3f); 
         matchManagerRef.matchManager(); //Initialize symbol matching proccess 
+        matchedSymbolReplacer.SymbolRefill(); //Initialize symbol refilling proccess
     }
 
 }
