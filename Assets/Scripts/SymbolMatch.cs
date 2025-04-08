@@ -23,12 +23,12 @@ public class SymbolMatch : MonoBehaviour
             for (int row = 0; row < 5; row++)
             {
                 Symbol symbol = spawnManager.symbolsData[col, row];
-                symbolsCounter[symbol.tier -1]++; //each  symbol has a position at symbolsCounter[] based on col & row
+                symbolsCounter[symbol.tier -1]++; //each symbol has a position at symbolsCounter[] based on col & row
             }
             rollsCounter++;
         }
         
-        //For iteration to add Match-7 symbols to symbolsToDelete list
+        //For iteration to add Match-8 symbols to symbolsToDelete list
         for (int col = 0; col < 6; col++)
         {
             for (int row = 0; row < 5; row++)
@@ -62,3 +62,4 @@ public class SymbolMatch : MonoBehaviour
         
     }
 }
+
