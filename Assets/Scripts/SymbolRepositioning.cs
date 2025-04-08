@@ -9,7 +9,10 @@ public class SymbolRepositioning : MonoBehaviour
     void Start()
     {
         spawnManager = FindObjectOfType<SymbolBoardManager>();
+    }
 
+    public void RepositionSymbols()
+    {
         for (int col = 0; col < 6; col++)
         {
             for (int row = 1; row < 5; row++)
@@ -37,10 +40,5 @@ public class SymbolRepositioning : MonoBehaviour
                 }
             }
         }
-    }
-
-    void Update()
-    {
-
     }
 }
