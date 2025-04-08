@@ -7,6 +7,7 @@ public class SymbolMatch : MonoBehaviour
     private SymbolBoardManager spawnManager;
     private int[] symbolsCounter = new int[9];
     private int rollsCounter = 0;
+    public bool matchFound;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +36,21 @@ public class SymbolMatch : MonoBehaviour
             {
                 Symbol symbol = spawnManager.symbolsData[col, row];
 
-                if (symbol != null && symbolsCounter[symbol.tier - 1] >= 7)   //Evaluating with 7 so only symbols with 7 or more matches will be added to symbolsToDelete list
+                if (symbol != null && symbolsCounter[symbol.tier - 1] >= 8)   //Evaluating with 8 so only symbols with 8 or more matches will be added to symbolsToDelete list
                 {
                     symbolsToDelete.Add(symbol);
                 
                 }
             }
+        }
+
+        if (symbolsToDelete.Count > 0)
+        {
+            matchFound = true;
+        }
+        else
+        {
+            matchFound = false;
         }
 
         //symbol remover 
