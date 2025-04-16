@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Script used for symbol repositioning after matched symbols were removed.
 public class SymbolRepositioning : MonoBehaviour
 {
     private SymbolBoardManager spawnManager;

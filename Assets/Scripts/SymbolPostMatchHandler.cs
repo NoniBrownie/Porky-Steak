@@ -8,6 +8,7 @@ public class SymbolPostMatchHandler : MonoBehaviour
     private SymbolBoardManager spawnManager;
     private SymbolVisualSync symbolVisualSync;
     private SymbolMatch symbolMatch;
+    private AfterMatchSymbolGeneration generateNewSymbols;
 
     void Start()
     {
@@ -15,6 +16,7 @@ public class SymbolPostMatchHandler : MonoBehaviour
         spawnManager = FindObjectOfType<SymbolBoardManager>();
         symbolVisualSync = FindObjectOfType<SymbolVisualSync>();
         symbolMatch = FindObjectOfType<SymbolMatch>();
+        generateNewSymbols = FindObjectOfType<AfterMatchSymbolGeneration>();
     }
 
     public void SymbolPhysicsUpdate()
@@ -36,6 +38,8 @@ public class SymbolPostMatchHandler : MonoBehaviour
             }
 
             symbolMatch.matchFound = false;
+            StartCoroutine(generateNewSymbols.generateNewSymbols());
+
         }
     }
 }

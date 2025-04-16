@@ -14,9 +14,6 @@ public class Button : MonoBehaviour
     {
         rollButtonRefPlay = FindObjectOfType<SymbolBoardManager>();
         rollButtonRefClean = FindObjectOfType<SymbolDrop>();
-        matchManagerRef = FindObjectOfType<SymbolMatch>();
-        symbolPhysicsUpdater = FindObjectOfType<SymbolPostMatchHandler>();
-        newSymbolGeneration = FindObjectOfType<AfterMatchSymbolGeneration>();
     }
     public void rollButtonPlay()
     {
@@ -28,20 +25,6 @@ public class Button : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f); 
         rollButtonRefPlay.RollButton();
-
-        while(rollButtonRefPlay.boardGenerated == false)
-        {
-            yield return null;  //Program waits to board generation in order to start matching game symbols
-        }
-
-        yield return new WaitForSeconds(1.25f); 
-        matchManagerRef.matchManager(); //Initialize symbol matching proccess 
-
-        yield return new WaitForSeconds(0.25f);
-        symbolPhysicsUpdater.SymbolPhysicsUpdate();
-        yield return new WaitForSeconds(0.05f);
-        newSymbolGeneration.generateNewSymbols();
-        Debug.Log("Roll finished");
     }
 
 }

@@ -19,29 +19,40 @@ public class AfterMatchSymbolGeneration : MonoBehaviour
         symbolPlacer = new SymbolPlacer(symbolPrefabs);
         spawnManager = FindObjectOfType<SymbolBoardManager>();
         symbolMatch = FindObjectOfType<SymbolMatch>();
-                
     }
 
-    public void generateNewSymbols()
+    public IEnumerator generateNewSymbols()
     {
-        if(symbolMatch.waitingForRefill == true)
+        bool symbolsGenerated = false;
+
+        for (int col = 0; col < 6; col++)
         {
-            for (int col = 0; col < 6; col++)
+            for (int row = 0; row < 5; row++)
             {
-                for (int row = 0; row < 5; row++ )
+                if (spawnManager.symbolsData[col, row] == null)
                 {
-                    if (spawnManager.symbolsData[col,row] == null)
-                    {
-                        Symbol newSymbol = symbolFactory.CreateSymbol(col,row);
-                        symbolPlacer.PlaceSymbol(newSymbol);
-                        newSymbolGeneration[col,row] = newSymbol; 
-                        Debug.Log("Generating new symbols after matching process");
-                    }
+                    Symbol newSymbol = symbolFactory.CreateSymbol(col, row);
+                    symbolPlacer.PlaceSymbol(newSymbol);
+                    newSymbolGeneration[col, row] = newSymbol;
+                    spawnManager.symbolsData[col, row] = newSymbolGeneration[col, row];
+                    symbolsGenerated = true;
                 }
+                yield return null;
             }
-            symbolMatch.waitingForRefill = false;
         }
 
-
+        if (symbolsGenerated)
+        {
+            symbolMatch.matchFound = false;
+            yield return new WaitForSeconds(1.25f); 
+            StartCoroutine(symbolMatch.MatchManager());
+           
+        }
+        else
+        {
+            Debug.Log("No more symbols to match detected");
+        }
     }
+
+
 }

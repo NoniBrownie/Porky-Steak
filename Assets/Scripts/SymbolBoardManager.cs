@@ -9,6 +9,7 @@ public class SymbolBoardManager : MonoBehaviour
     public GameObject[] symbolPrefabs;
     private SymbolFactory symbolFactory;
     private SymbolPlacer symbolPlacer;
+    private SymbolMatch symbolMatch;
     public Symbol[,] symbolsData;
     public bool boardGenerated = false;
 
@@ -17,6 +18,7 @@ public class SymbolBoardManager : MonoBehaviour
         symbolsData = new Symbol[6, 5];
         symbolFactory = new SymbolFactory();
         symbolPlacer = new SymbolPlacer(symbolPrefabs);
+        symbolMatch = FindObjectOfType<SymbolMatch>();
     }
 
     public IEnumerator GenerateSymbol()
@@ -32,7 +34,9 @@ public class SymbolBoardManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.1f);
         }
+        yield return new WaitForSeconds(1.75f);
         boardGenerated = true;
+        symbolMatch.StartMatchManager();
         
     }
 

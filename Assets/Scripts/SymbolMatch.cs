@@ -7,16 +7,21 @@ public class SymbolMatch : MonoBehaviour
     private SymbolBoardManager spawnManager;
     private int[] symbolsCounter = new int[9];
     private int rollsCounter = 0;
+    private SymbolPostMatchHandler symbolPropertiesUpdater;
     public bool matchFound = false;
     public bool waitingForRefill = false;
     // Start is called before the first frame update
     void Start()
     {
       spawnManager = FindObjectOfType<SymbolBoardManager>();
+      symbolPropertiesUpdater = FindObjectOfType<SymbolPostMatchHandler>();
+
     }
 
-    public void matchManager()
+
+    public IEnumerator MatchManager()
     {
+        waitingForRefill = false;
         List<Symbol> symbolsToDelete = new List<Symbol>();
         symbolsCounter = new int[9];
 
@@ -41,7 +46,6 @@ public class SymbolMatch : MonoBehaviour
                 {
                     symbolsToDelete.Add(symbol);
                     waitingForRefill = true;
-                
                 }
             }
         }
@@ -53,6 +57,8 @@ public class SymbolMatch : MonoBehaviour
         else
         {
             matchFound = false;
+            waitingForRefill = false;
+                
         }
 
         //symbol remover 
@@ -60,7 +66,21 @@ public class SymbolMatch : MonoBehaviour
         {
             Destroy(symbol.symbolObject);
             spawnManager.symbolsData[symbol.column,symbol.positionInColumn] =null;
-         }        
+        }
+
+        if (matchFound == true)
+        {
+            symbolPropertiesUpdater.SymbolPhysicsUpdate();
+
+
+        }
+         yield return null;
+         Debug.Log("Matching checker finished");
+    }
+
+    public void StartMatchManager()
+    {
+        StartCoroutine(MatchManager());
     }
 }
 
