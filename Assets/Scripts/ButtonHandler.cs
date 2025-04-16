@@ -9,12 +9,14 @@ public class Button : MonoBehaviour
     private SymbolDrop rollButtonRefClean;
     private SymbolMatch matchManagerRef;
     private SymbolPostMatchHandler symbolPhysicsUpdater;
+    private AfterMatchSymbolGeneration newSymbolGeneration;
     void Start () 
     {
         rollButtonRefPlay = FindObjectOfType<SymbolBoardManager>();
         rollButtonRefClean = FindObjectOfType<SymbolDrop>();
         matchManagerRef = FindObjectOfType<SymbolMatch>();
         symbolPhysicsUpdater = FindObjectOfType<SymbolPostMatchHandler>();
+        newSymbolGeneration = FindObjectOfType<AfterMatchSymbolGeneration>();
     }
     public void rollButtonPlay()
     {
@@ -37,6 +39,9 @@ public class Button : MonoBehaviour
 
         yield return new WaitForSeconds(0.25f);
         symbolPhysicsUpdater.SymbolPhysicsUpdate();
+        yield return new WaitForSeconds(0.05f);
+        newSymbolGeneration.generateNewSymbols();
+        Debug.Log("Roll finished");
     }
 
 }
